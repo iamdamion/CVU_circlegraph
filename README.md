@@ -1,4 +1,4 @@
-# Connectivity Circle Graph Creator Using the CVU Python Library
+# Connectivity Circle Graph Creator Using the MNE Visualization Python Library
 ## Created by Damion V. Demeter @ Developmental Cognitive Neuroscience Lab (UT Austin)
 "Insert matrix, receive circle graph!"  
 
