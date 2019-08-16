@@ -49,7 +49,6 @@ jupyter-console==5.2.0
 jupyter-core==4.4.0
 keepalive==0.5
 kiwisolver==1.0.1
-LabJackPython===10-22-2012
 linecache2==1.0.0
 lxml==4.3.3
 MarkupSafe==1.1.1
