@@ -168,7 +168,7 @@ def main(argv=sys.argv):
 
         ## WRITE GRAPH TO FIG ##
         if color_type == 'DARK':
-            plot_connectivity_circle(threshmat, label_names, node_angles=node_angles, node_colors=label_colors, 
+            plot_connectivity_circle(threshmat, label_names, node_angles=node_angles, node_colors=label_colors,
                                     title=title, fontsize_title=48, textcolor='white', facecolor='black',
                                     node_edgecolor='black', node_linewidth = .5, linewidth=1.5, fontsize_names=8,
                                     colormap='hot', vmin=minval, vmax=maxval, 
@@ -183,7 +183,7 @@ def main(argv=sys.argv):
             plt.gcf().text(.633, .5, 'R', color='white', fontsize=48)
 
         elif color_type == 'LIGHT':
-            plot_connectivity_circle(threshmat, label_names, node_angles=node_angles, node_colors=label_colors, 
+            plot_connectivity_circle(threshmat, label_names, node_angles=node_angles, node_colors=label_colors,
                                     title=title, fontsize_title=48, textcolor='black', facecolor='white',
                                     node_edgecolor='black', node_linewidth = .5, linewidth=1.5, fontsize_names=8,
                                     colormap='hot_r', vmin=minval, vmax=maxval, # colormap='YlGnBu'
