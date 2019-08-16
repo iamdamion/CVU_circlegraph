@@ -197,14 +197,11 @@ def main(argv=sys.argv):
             plt.gcf().text(.22, .5, 'L', color='black', fontsize=48)
             plt.gcf().text(.633, .5, 'R', color='black', fontsize=48)
 
-
         ## SAVE FIGURE ##
         out_fig = os.path.abspath(os.path.join(out_path,file_name + '_THR' + str(thr)))
 
         # have to re-set the facecolor before saving #
         fig.savefig(out_fig, facecolor=fc)
-
-
 
     #################################################
     ##               MAIN SCRIPT ENTRY             ##
