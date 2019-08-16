@@ -5,7 +5,6 @@
 [![Build Status](https://travis-ci.org/iamdamion/MNE_circlegraph.svg?branch=master)](https://travis-ci.org/iamdamion/MNE_circlegraph)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-**currently broken because of MNE dependency**
 **"Insert matrix, receive circle graph!"**  
 
 This script will create a circle graph, with network color-coded labels from any type of connectivity matrix in .csv format. Necessary items:  
@@ -13,7 +12,12 @@ This script will create a circle graph, with network color-coded labels from any
 - Network info .csv file. (An example is provided for the "UT 255" ROI set. This can be used as a template for any ROI set as long as the list matches the conectivity matrix dimensions)   
  
 ### Prerequisites
-This script requires the MNE visulization library for python. Installation instructions can be found here: https://martinos.org/mne/stable/index.html   
+This script requires the MNE visulization library for python. More info can be found here: https://martinos.org/mne/stable/index.html   
+This script uses python 2.7, so the best way to install MNE that works with 2.7 is to pip install this version:
+```
+pip install mne==0.17.2
+```
+
 Other requirements should be common (matplotlib, numpy, etc)   
 **Note: This will output a .png file that you will need to crop. Currently, ROI labels are turned off because they are visually cluttered, but smaller matrices/ROI sets could use them. However, this is hardcoded at this point.**
 
