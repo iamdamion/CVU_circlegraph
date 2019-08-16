@@ -2,6 +2,7 @@
 <p align="center"> Created by Damion V. Demeter</p>  
 <p align="center"> at the Developmental Cognitive Neuroscience Lab (UT Austin)</p> 
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/3cdba526f9524e62b20e49e384d21afc)](https://app.codacy.com/app/iamdamion/MNE_circlegraph?utm_source=github.com&utm_medium=referral&utm_content=iamdamion/MNE_circlegraph&utm_campaign=Badge_Grade_Dashboard)
 [![Build Status](https://travis-ci.org/iamdamion/MNE_circlegraph.svg?branch=master)](https://travis-ci.org/iamdamion/MNE_circlegraph)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
