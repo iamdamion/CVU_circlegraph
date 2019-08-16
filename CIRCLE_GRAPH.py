@@ -3,29 +3,32 @@
 #
 # Originally written by Damion Demeter 10.30.18
 #
-# Circle Graph Maker - Insert matrix, receive circle graph visualization!  (see last revision's modified date)
+# Circle Graph Maker - Insert matrix, receive circle graph visualization!
+# (see last revision's modified date)
 from __future__ import division
 
-last_modified = 'Last Modified by Damion Demeter, 01.09.19'
-
+import argparse, csv, os, re, sys
 import numpy as np
-import argparse,csv,os,re,sys
 from mne.viz import circular_layout, plot_connectivity_circle
 import matplotlib.pyplot as plt
 
+last_modified = 'Last Modified by Damion Demeter, 01.09.19'
 here = os.path.dirname(os.path.abspath(os.path.realpath(__file__)))
 ############
-prog_descrip = 'Circle Maker: This script takes a matrix file made using an ROI info .csv (see \
-example file). It will make a hemisphere-split circle graph with functional connections. One or \
-multiple thresholds can be used. Thresholds can be correlation values OR they can be any value \
-(such as "rank" values if the matrix is a CV fold count matrix, etc). Inputs and options will be \
-expanded as they come up. See -h for input options.' + last_modified
+prog_descrip = 'Circle Maker: This script takes a matrix file made using an \
+ROI info .csv (see example file). It will make a hemisphere-split circle graph\
+with functional connections. One or multiple thresholds can be used.\
+Thresholds can be correlation values OR they can be any value (such as "rank"\
+values if the matrix is a CV fold count matrix, etc). Inputs and options will\
+be expanded as they come up. See -h for input options.' + last_modified
+
 
 def main(argv=sys.argv):
-    arg_parser = argparse.ArgumentParser(description=prog_descrip,formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    arg_parser = argparse.ArgumentParser(description=prog_descrip,
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     # Check for arguments. #
-    if len(sys.argv[1:])==0:
+    if len(sys.argv[1:]) == 0:
         print '\nArguments required. Use -h option to print FULL usage.\n'
     arg_parser.add_argument('-color', metavar='COLOR', action='store', required=False, default='d',
                             help=('Color scheme type. l=light, d=dark. (Default=d)'),
@@ -46,7 +49,7 @@ def main(argv=sys.argv):
     arg_parser.add_argument('-o', metavar='OUT_PATH', action='store', required=True,
                             help=('Path to output directory. All graph images (png) will be saved here.'),
                             dest='out_path'
-                           )
+                            )
     arg_parser.add_argument('-t', action='store', nargs='+', type=str, required=False, default=[0],
                             help=('SPACE separated list of threshold values. One graph will be made per value. \
                             If blank, no threshold will be applied. (Default = None)'),
@@ -55,7 +58,7 @@ def main(argv=sys.argv):
     arg_parser.add_argument('-tdir', action='store', required=False, default = 'less',
                             help=('Threshdold direction. "less"= less than thresh value. "great" = greater than. (Default = "less")'),
                             dest='tdir'
-                           )
+                            )
     args = arg_parser.parse_args()
     #################################################
     ## Script Argument Verification and Assignment ##
@@ -115,32 +118,31 @@ def main(argv=sys.argv):
     info_dict = {}
     reader = csv.DictReader(open(info_path, 'rU'))
     for row in reader:
-        info_dict[row['label']] = {'hemi':row['hemi'],
-                                   'color':row['color'],
-                                   'network':row['network'],
-                                   'net_color':row['net_color']}
+        info_dict[row['label']] = {'hemi': row['hemi'],
+                                   'color': row['color'],
+                                   'network': row['network'],
+                                   'net_color': row['net_color']}
 
     #################################################
     ##                  FUNCTIONS                  ##
     #################################################
-    def natural_sort(l): 
-        convert = lambda text: int(text) if text.isdigit() else text.lower() 
-        alphanum_key = lambda key: [ convert(c) for c in re.split('([0-9]+)', key) ] 
-        return sorted(l, key = alphanum_key)
+    def natural_sort(l):
+        convert = lambda text: int(text) if text.isdigit() else text.lower()
+        alphanum_key = lambda key: [convert(c) for c in re.split('([0-9]+)', key)]
+        return sorted(l, key=alphanum_key)
 
     def load_thresh_mat(mat_path,thr):
         ## LOAD MATRIX .csv ##
-        mat = np.genfromtxt(mat_path,delimiter=',')
+        mat = np.genfromtxt(mat_path, delimiter=',')
         ## GET UNIQUE CONNECTIONS ##
-        mat = np.tril(mat,-1)
+        mat = np.tril(mat, -1)
         ## THRESHOLD MATRIX ##
         threshmat = mat.copy()
         threshmat[threshmat < thr] = 0
 
         return threshmat
 
-    def make_circle(threshmat,outpath,label_names,thr):
-        
+    def make_circle(threshmat, outpath, label_names, thr):
         ## GET VMIN AND MAX FROM MATRIX
         # maxval = threshmat.max()
         # minval = np.min(threshmat[np.nonzero(threshmat)]) - 1
