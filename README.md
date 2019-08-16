@@ -1,5 +1,9 @@
-# Connectivity Circle Graph Creator Using the MNE Visualization Python Library
-## Created by Damion V. Demeter @ Developmental Cognitive Neuroscience Lab (UT Austin)
+## <p align="center">Connectivity Circle Graph Creator Using the MNE Visualization Python Library</p>   
+<p align="center"> Created by Damion V. Demeter</p>  
+<p align="center"> at the Developmental Cognitive Neuroscience Lab (UT Austin)</p> 
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 **"Insert matrix, receive circle graph!"**  
 
 This script will create a circle graph, with network color-coded labels from any type of connectivity matrix in .csv format. Necessary items:  
