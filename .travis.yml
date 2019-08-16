@@ -4,4 +4,4 @@ python:
   - 2.7
 
 script:
-  - python CIRCLE_GRAPH.py
+  - python CIRCLE_GRAPH.py -g TEST -m /Users/dvd296/Dropbox/1_GITHUB_REPOS/ZYMATCH_PAPER/GROUP_FINAL_CSVS/ALLGROUPS_ALL_FOLDS_MAT.csv -o /Users/dvd296/Desktop/delete/

@@ -55,7 +55,7 @@ def main(argv=sys.argv):
                             If blank, no threshold will be applied. (Default = None)'),
                             dest='thresh_list'
                             )
-    arg_parser.add_argument('-tdir', action='store', required=False, default = 'less',
+    arg_parser.add_argument('-tdir', action='store', required=False, default='less',
                             help=('Threshdold direction. "less"= less than thresh value. "great" = greater than. (Default = "less")'),
                             dest='tdir'
                             )
