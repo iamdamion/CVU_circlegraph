@@ -2,8 +2,10 @@
 <p align="center"> Created by Damion V. Demeter</p>  
 <p align="center"> at the Developmental Cognitive Neuroscience Lab (UT Austin)</p> 
 
+[![Build Status](https://travis-ci.org/iamdamion/MNE_circlegraph.svg?branch=master)](https://travis-ci.org/iamdamion/MNE_circlegraph)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+**currently broken because of MNE dependency**
 **"Insert matrix, receive circle graph!"**  
 
 This script will create a circle graph, with network color-coded labels from any type of connectivity matrix in .csv format. Necessary items:  
