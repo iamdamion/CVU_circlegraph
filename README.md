@@ -56,6 +56,6 @@ optional arguments:
 ```												
 
 ### Outputs:
-Be default, you will receive a .png file for each threshold you request in the output directory you specify. Please use group name argument if running for multiple groups or files will be overwritten.   
+By default, you will receive a .png file for each threshold you request in the output directory you specify. Please use group name argument if running for multiple groups or files will be overwritten.   
 **It's suggested you re-name and move them from here, but whatever works for your personal workflow.**
 	
