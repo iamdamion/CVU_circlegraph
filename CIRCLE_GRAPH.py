@@ -171,7 +171,7 @@ def main(argv=sys.argv):
             plot_connectivity_circle(threshmat, label_names, node_angles=node_angles, node_colors=label_colors,
                                     title=title, fontsize_title=48, textcolor='white', facecolor='black',
                                     node_edgecolor='black', node_linewidth = .5, linewidth=1.5, fontsize_names=8,
-                                    colormap='hot', vmin=minval, vmax=maxval, 
+                                    colormap='hot', vmin=minval, vmax=maxval,
 
                                     ### make vmin and max the values from the min/max of matrix
 
