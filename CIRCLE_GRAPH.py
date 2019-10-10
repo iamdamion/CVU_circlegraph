@@ -25,12 +25,13 @@ be expanded as they come up. See -h for input options.' + last_modified
 
 def main(argv=sys.argv):
     arg_parser = argparse.ArgumentParser(description=prog_descrip,
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+                                         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     # Check for arguments. #
     if len(sys.argv[1:]) == 0:
         print '\nArguments required. Use -h option to print FULL usage.\n'
-    arg_parser.add_argument('-color', metavar='COLOR', action='store', required=False, default='d',
+    arg_parser.add_argument('-color', metavar='COLOR', action='store',
+                            required=False, default='d',
                             help=('Color scheme type. l=light, d=dark. (Default=d)'),
                             dest='color_type'
                             )
@@ -100,7 +101,7 @@ def main(argv=sys.argv):
     if len(args.thresh_list) == 1 and args.thresh_list[0] == 0:
         print '- No threshold(s) supplied. Whole matrix will be used.'
     else:
-        print '- The following threshold(s) will be applied:\n  '+ str(args.thresh_list)
+        print '- The following threshold(s) will be applied:\n  ' + str(args.thresh_list)
         print '  All values *' + args.tdir + ' than* the threshold(s) will be ZEROED OUT.'
     ### VERIFY OUTPUT PATH EXISTS ###
     if os.path.isdir(args.out_path):
@@ -128,7 +129,8 @@ def main(argv=sys.argv):
     #################################################
     def natural_sort(l):
         convert = lambda text: int(text) if text.isdigit() else text.lower()
-        alphanum_key = lambda key: [convert(c) for c in re.split('([0-9]+)', key)]
+        alphanum_key = lambda key: [convert(c) for c in re.split('([0-9]+)',
+                                                                 key)]
         return sorted(l, key=alphanum_key)
 
     def load_thresh_mat(mat_path,thr):
@@ -159,7 +161,8 @@ def main(argv=sys.argv):
         fig = plt.figure(num=None, figsize=(30, 30), facecolor=fc)
 
         ## MAKE NODES ANGLES ##
-        node_angles = circular_layout(label_names, node_order, start_pos=sp, group_boundaries=split)
+        node_angles = circular_layout(label_names, node_order, start_pos=sp,
+                                      group_boundaries=split)
 
         ## REMOVE NAMES IF TRUE ##
         remove_names = True
@@ -168,30 +171,43 @@ def main(argv=sys.argv):
 
         ## WRITE GRAPH TO FIG ##
         if color_type == 'DARK':
-            plot_connectivity_circle(threshmat, label_names, node_angles=node_angles, node_colors=label_colors,
-                                    title=title, fontsize_title=48, textcolor='white', facecolor='black',
-                                    node_edgecolor='black', node_linewidth = .5, linewidth=1.5, fontsize_names=8,
-                                    colormap='hot', vmin=minval, vmax=maxval,
+            plot_connectivity_circle(threshmat, label_names,
+                                     node_angles=node_angles,
+                                     node_colors=label_colors,
+                                     title=title, fontsize_title=48,
+                                     textcolor='white', facecolor='black',
+                                     node_edgecolor='black', node_linewidth=.5,
+                                     linewidth=1.5, fontsize_names=8,
+                                     colormap='hot', vmin=minval, vmax=maxval,
 
-                                    ### make vmin and max the values from the min/max of matrix
+                                     ### make vmin and max the values from the min/max of matrix
 
-                                    colorbar_size=0.2, colorbar_pos=(-1, .5), fontsize_colorbar=28, colorbar=True,
-                                    padding=6.0, fig=fig, subplot=111, interactive=False, show=False)
+                                     colorbar_size=0.2, colorbar_pos=(-1, .5),
+                                     fontsize_colorbar=28, colorbar=True,
+                                     padding=6.0, fig=fig, subplot=111,
+                                     interactive=False, show=False)
 
             # ADD Left/Right Labels
             plt.gcf().text(.22, .5, 'L', color='white', fontsize=48)
             plt.gcf().text(.633, .5, 'R', color='white', fontsize=48)
 
         elif color_type == 'LIGHT':
-            plot_connectivity_circle(threshmat, label_names, node_angles=node_angles, node_colors=label_colors,
-                                    title=title, fontsize_title=48, textcolor='black', facecolor='white',
-                                    node_edgecolor='black', node_linewidth = .5, linewidth=1.5, fontsize_names=8,
-                                    colormap='hot_r', vmin=minval, vmax=maxval, # colormap='YlGnBu'
+            plot_connectivity_circle(threshmat, label_names,
+                                     node_angles=node_angles,
+                                     node_colors=label_colors,
+                                     title=title, fontsize_title=48,
+                                     textcolor='black', facecolor='white',
+                                     node_edgecolor='black', node_linewidth=.5,
+                                     linewidth=1.5, fontsize_names=8,
+                                     colormap='hot_r', vmin=minval,
+                                     vmax=maxval, # colormap='YlGnBu'
 
-                                    ### make vmin and max the values from the min/max of matrix
+                                     ### make vmin and max the values from the min/max of matrix
 
-                                    colorbar_size=0.2, colorbar_pos=(-1, .5), fontsize_colorbar=28, colorbar=True,
-                                    padding=6.0, fig=fig, subplot=111, interactive=False, show=False)
+                                     colorbar_size=0.2, colorbar_pos=(-1, .5),
+                                     fontsize_colorbar=28, colorbar=True,
+                                     padding=6.0, fig=fig, subplot=111,
+                                     interactive=False, show=False)
 
             # ADD Left/Right Labels
             plt.gcf().text(.22, .5, 'L', color='black', fontsize=48)
